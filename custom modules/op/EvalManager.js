@@ -286,6 +286,9 @@ function Evaluator(){
         Evaluator.ALIVE_TIME, java.util.concurrent.TimeUnit.MINUTES,
         new java.util.concurrent.LinkedBlockingQueue()
     );
+
+    // 컴파일 시 스레드풀 소멸 요청
+    BotManager?.getCurrentBot().addListener(Event.START_COMPILE, () => this.$exe.shutdown())
 }
 
 Evaluator.success_styler = function(result, timeout, msg){
@@ -297,7 +300,7 @@ Evaluator.error_styler = function(error, timeout, msg){
         + "\u200b".repeat(500)
         + "\n" + error.stack;
 }
-Evaluator.timeout_styler = function(safeTimeout, msg){
+Evaluator.timeout_styler = function(timeout, msg){
     return "⛔OverTime(> " + timeout + " sec.) Warning!"
         + "\n- Execution has been forcibly terminated due to a timeout." 
 }
@@ -483,7 +486,7 @@ Evaluator.prototype.eval = function(msg /* KP.MESSAGE */, globalScope){
                 e.name = err[0];
             }
             if(e.name === "java.util.concurrent.TimeoutException" || e instanceof TimeoutException){
-                msg.reply(this.$tsf(this.$sto, msg));
+                msg.reply(this.$tsf(record$$.time>0? record$$.time: (this.$sto/1e3), msg));
             } else  {
                 e.stack = err[2]
                     .split('\n').filter(v => v.indexOf('op/EvalManager.js') === -1).join('\n');

@@ -28,7 +28,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 /**
  * @name Message
- * 
+ * @des
  */
 
 
@@ -59,7 +59,7 @@ function Message(msg){
     this.isDebugRoom = msg.isDebugRoom
     this.isGroupChat = msg.isGroupChat
     this.isMention = msg.isMention
-    this.isMultiChat = msg.isMultiChat
+    this.isMultiChat = msg.isMultiChat // 옾챗 아닌 단톡
     this.reply = (a, b) => b? msg.reply(a, b): msg.reply(a)
     this.markAsRead = () => msg.markAsRead()
 }

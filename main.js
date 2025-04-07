@@ -66,7 +66,10 @@ function onMessage(msg){
 
     msg = new Message(msg);
 
-    evalManager.eval(msg, globalThis);
+    var eval_scope = Object.create(globalThis);
+    eval_scope.msg = msg;
+    evalManager.eval(msg, eval_scope);
+    Object.keys(eval_scope).forEach(v => globalThis[v] = eval_scope[v]);
 
     // if((msg.room === "프로젝트 - 테스팅 방★" || !msg.isGroupChat) && msg.content.startsWith("e")){
     //     let code = msg.content.slice(1).trim()
