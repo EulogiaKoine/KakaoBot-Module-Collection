@@ -297,8 +297,7 @@ Evaluator.success_styler = function(result, timeout, msg){
 Evaluator.error_styler = function(error, timeout, msg){
     return "☢ " + error.name + "   ··· " + error.lineNumber
         + "\n" + error.message
-        + "\u200b".repeat(500)
-        + "\n" + error.stack;
+        + (error.stack? ("\u200b".repeat(500) + "\n" + error.stack): '');
 }
 Evaluator.timeout_styler = function(timeout, msg){
     return "⛔OverTime(> " + timeout + " sec.) Warning!"
@@ -488,8 +487,8 @@ Evaluator.prototype.eval = function(msg /* KP.MESSAGE */, globalScope){
             if(e.name === "java.util.concurrent.TimeoutException" || e instanceof TimeoutException){
                 msg.reply(this.$tsf(record$$.time>0? record$$.time: (this.$sto/1e3), msg));
             } else  {
-                e.stack = err[2]
-                    .split('\n').filter(v => v.indexOf('op/EvalManager.js') === -1).join('\n');
+                if(err[2])
+                    e.stack = err[2].split('\n').filter(v => v.indexOf('op/EvalManager.js') === -1).join('\n');
                 e.lineNumber = record$$.errorLine;
                 msg.reply(this.$esf(e, record$$.time, msg));
             }
