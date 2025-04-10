@@ -483,12 +483,13 @@ Evaluator.prototype.eval = function(msg /* KP.MESSAGE */, globalScope){
                 err.push(e.stack);
                 e = new Error(err[1]);
                 e.name = err[0];
+                e.stack = err[2]
             }
             if(e.name === "java.util.concurrent.TimeoutException" || e instanceof TimeoutException){
                 msg.reply(this.$tsf(record$$.time>0? record$$.time: (this.$sto/1e3), msg));
             } else  {
-                if(err[2])
-                    e.stack = err[2].split('\n').filter(v => v.indexOf('op/EvalManager.js') === -1).join('\n');
+                e.stack = e.stack
+                    ?.split('\n').filter(v => v.indexOf('EvalManager.js') === -1).join('\n');
                 e.lineNumber = record$$.errorLine;
                 msg.reply(this.$esf(e, record$$.time, msg));
             }
