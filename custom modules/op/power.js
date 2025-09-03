@@ -29,6 +29,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 (function(){
 
+var android = typeof android === 'undefined'? Packages.android: android
+
 Object.defineProperty(module.exports, "__wakelock__", {
     value: (function(){
         var res = App.getContext().getSystemService(android.content.Context.POWER_SERVICE)

@@ -1,0 +1,17 @@
+{
+    "codes": [],
+    "jobs": [],
+    "deads": [],
+    "heads": {
+        "unassigned": 0,
+        "cretes": 0,
+        "restes": 0,
+        "ormas": 0
+    },
+    "teams": {
+        "unassigned": [],
+        "cretes": [],
+        "restes": [],
+        "ormas": []
+    }
+}

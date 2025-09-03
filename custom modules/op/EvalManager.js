@@ -536,7 +536,7 @@ EvalManager.prototype.toObject = function(){
 }
 
 EvalManager.prototype.load = function(){
-    if(!java.io.File(this.filepath).exists())
+    if(!new java.io.File(this.filepath).exists())
         throw new ReferenceError("file " + this.filepath + " not found.");
 
     var file = FileStream.read(this.filepath);

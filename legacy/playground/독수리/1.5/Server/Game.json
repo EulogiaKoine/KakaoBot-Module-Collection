@@ -1,0 +1,17 @@
+{
+    "manager": {
+        "name": null,
+        "code": null
+    },
+    "recuiting": false,
+    "gaming": false,
+    "voting": false,
+    "votes": [],
+    "inJudgement": false,
+    "prisoner": null,
+    "judgements": [],
+    "day": 0,
+    "isDay": false,
+    "players": [],
+    "room": null
+}

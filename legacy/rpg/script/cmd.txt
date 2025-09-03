@@ -1,0 +1,7 @@
+```registeration_fail
+이미 가입한 유저입니다.
+```
+
+```registeration_success
+{userName}님의 가입을
+```

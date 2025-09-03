@@ -41,7 +41,7 @@ function Message(msg){
     this.sender = msg.author.name
     Object.defineProperty(this, 'profileHash', {
         get(){
-            const hash = java.lang.String(msg.author.avatar.getBase64()).hashCode()
+            const hash = new java.lang.String(msg.author.avatar.getBase64()).hashCode()
             Object.defineProperty(this, 'profileHash', {
                 value: hash,
                 writable: true,

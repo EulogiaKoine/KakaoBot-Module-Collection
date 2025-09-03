@@ -1,0 +1,21 @@
+{
+    "job": "사교꾼",
+    "ability": [
+        "초대"
+    ],
+    "process": {
+        "voting": [],
+        "usingAbility": [],
+        "becomingDay": [
+            {
+                "name": "사교의_정점",
+                "countable": false,
+                "count": 1
+            }
+        ],
+        "becomingNight": [],
+        "beUnderAttack": [],
+        "observed": [],
+        "dying": []
+    }
+}
